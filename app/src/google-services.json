@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "537358162181",
+    "project_id": "intercambio-a6ad5",
+    "storage_bucket": "intercambio-a6ad5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:537358162181:android:54838a2387629b97267f6c",
+        "android_client_info": {
+          "package_name": "com.example.intercambiolibros"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "537358162181-8ik5th3no0at40va0us6ep27vvudumej.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD9S3GQPH73TqVAGdHxLQeMMPf8Znome48"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "537358162181-8ik5th3no0at40va0us6ep27vvudumej.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
