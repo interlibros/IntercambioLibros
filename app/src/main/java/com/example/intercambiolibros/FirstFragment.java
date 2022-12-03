@@ -2,6 +2,7 @@ package com.example.intercambiolibros;
 
 import android.os.Bundle;
 import android.text.format.DateFormat;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,8 +17,12 @@ import com.firebase.ui.database.FirebaseListAdapter;
 import com.firebase.ui.database.FirebaseListOptions;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
-import com.google.firebase.database.Query;
+import com.google.firebase.database.GenericTypeIndicator;
+import com.google.firebase.database.ValueEventListener;
 
 public class FirstFragment extends Fragment {
 
@@ -44,7 +49,7 @@ public class FirstFragment extends Fragment {
             public void onClick(View view) {
 
 
-                Toast.makeText(getActivity().getApplicationContext(), "paso 1", Toast.LENGTH_LONG).show();
+               // Toast.makeText(getActivity().getApplicationContext(), "paso 1", Toast.LENGTH_LONG).show();
                 EditText input = (EditText) vieww.findViewById(R.id.input);
 
 
@@ -66,6 +71,51 @@ public class FirstFragment extends Fragment {
             }
         });
 
+        final TextView textview = (TextView) vieww.findViewById(R.id.textView );
+
+        //Instancia a la base de datos
+        FirebaseDatabase fdb = FirebaseDatabase.getInstance();
+        //apuntamos al nodo que queremos leer
+        DatabaseReference myRef = fdb.getReference("Chats");
+
+        //Agregamos un ValueEventListener para que los cambios que se hagan en la base de datos
+        //se reflejen en la aplicacion
+        myRef.addValueEventListener(new ValueEventListener() {
+
+            @Override
+            public void onDataChange(DataSnapshot dataSnapshot){
+
+                //leeremos un objeto de tipo Estudiante
+                GenericTypeIndicator<ChatMessage > t = new GenericTypeIndicator<ChatMessage>() {};
+                ChatMessage  estudiante = dataSnapshot.getValue(t);
+
+                //formamos el resultado en un string
+               String resultado = "Como objeto java:\n\n";
+//                resultado += estudiante + "\n";
+//                resultado += "Propiedad Estudiante:\nNombre completo: " +estudiante.getMessageText() ;
+
+                //Tambien podemos leer los datos como un string
+                resultado += "\n\n-----------------------------\n\n";
+                resultado += "Como JSON:\n\n";
+                resultado += dataSnapshot.getValue().toString();
+
+
+               // resultado += dataSnapshot.child("messageText").toString()+  "\n";
+
+//                //leemos un nodo hijo del nodo estudiante
+//                resultado += "\n Key: " + dataSnapshot.child("nombre_completo").getKey()+"\n";
+//                resultado += "\n Valor: " + dataSnapshot.child("nombre_completo").getValue(String.class);
+
+                //mostramos en el textview
+                textview.setText(resultado);
+            }
+            @Override
+            public void onCancelled(DatabaseError error){
+                Log.e("ERROR FIREBASE",error.getMessage());
+            }
+
+        });
+
 
 
       //  return inflater.inflate(R.layout.fragment_first, container, false);
@@ -76,15 +126,14 @@ public class FirstFragment extends Fragment {
 
        ListView listOfMessages = (ListView) vieww.findViewById(R.id.list_of_messages);
 
-        Query query = FirebaseDatabase.getInstance()
+        DatabaseReference  query = FirebaseDatabase.getInstance()
                 .getReference()
-                .child("chats")
-                .limitToLast(50)
-                ;
+               .child("Chats");
+         Toast.makeText(getActivity().getApplicationContext(), query.getParent().toString() , Toast.LENGTH_LONG).show();
 
         FirebaseListOptions<ChatMessage> options = new FirebaseListOptions.Builder<ChatMessage>()
+                .setLayout(R.layout.message )
                 .setQuery(query, ChatMessage.class)
-                .setLayout(R.layout.fragment_first  )
                 .build();
 
         adapter = new FirebaseListAdapter<ChatMessage>(options) {
