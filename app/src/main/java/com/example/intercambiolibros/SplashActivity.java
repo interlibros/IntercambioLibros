@@ -16,8 +16,7 @@ public class SplashActivity extends AppCompatActivity {
         setContentView(R.layout.activity_splash);
 
         //quitar ActionBar
-       // getSupportActionBar().hide();
-
+        // getSupportActionBar().hide();
 
 
         //user y pass
@@ -33,10 +32,10 @@ public class SplashActivity extends AppCompatActivity {
                 boolean sesion = preferences.getBoolean("sesion", false);
 
                 Intent i;
-                if (sesion){
-                   i = new Intent(getApplicationContext(), DashBoardActivity.class);
-                 //   i = new Intent(getApplicationContext(), LoginActivity.class);
-                }else {
+                if (sesion) {
+                    i = new Intent(getApplicationContext(), DashBoardActivity.class);
+                    //   i = new Intent(getApplicationContext(), LoginActivity.class);
+                } else {
 
                     i = new Intent(getApplicationContext(), LoginActivity.class);
 

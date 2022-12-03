@@ -3,13 +3,13 @@
     <item
         android:id="@+id/person"
         android:title="Mensajes"
-        android:icon="@android:drawable/ic_dialog_email"/>
+        android:icon="@android:drawable/ic_dialog_email" />
     <item
         android:id="@+id/home"
         android:title="Inicio"
-        android:icon="@android:drawable/ic_dialog_dialer"/>
+        android:icon="@android:drawable/ic_dialog_dialer" />
     <item
         android:id="@+id/settings"
         android:title="Perfil"
-        android:icon="@android:drawable/sym_contact_card"/>
+        android:icon="@android:drawable/sym_contact_card" />
 </menu>
