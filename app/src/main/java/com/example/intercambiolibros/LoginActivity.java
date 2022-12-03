@@ -26,13 +26,11 @@ public class LoginActivity extends AppCompatActivity {
     private Button acceder;
     private FirebaseAuth mAuth;
 
-    private EditText  editCorreo;
-    private EditText  editPassword;
+    private EditText editCorreo;
+    private EditText editPassword;
 
-    private String email = "" ;
-    private String password ="" ;
-
-
+    private String email = "";
+    private String password = "";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -50,8 +48,6 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-
-
                 email = editCorreo.getText().toString();
                 password = editPassword.getText().toString();
 
@@ -59,17 +55,12 @@ public class LoginActivity extends AppCompatActivity {
 
                     loginUser();
 
-
                 } else {
 
                     Toast.makeText(LoginActivity.this, "Complete los campos", Toast.LENGTH_SHORT).show();
                 }
-
-
             }
         });
-
-
     }
 
 
@@ -88,7 +79,6 @@ public class LoginActivity extends AppCompatActivity {
 
                     Toast.makeText(LoginActivity.this, "No se pudo iniciar sesion, compruebe los datos", Toast.LENGTH_SHORT).show();
                 }
-
             }
         });
     }
@@ -101,7 +91,6 @@ public class LoginActivity extends AppCompatActivity {
         editor.putString("password", password);
         editor.putBoolean("sesion", true);
         editor.commit();
-
     }
 
     private void getPreferences() {

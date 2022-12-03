@@ -34,8 +34,8 @@ public class SplashActivity extends AppCompatActivity {
 
                 Intent i;
                 if (sesion){
-                 //  i = new Intent(getApplicationContext(), DashBoardActivity.class);
-                    i = new Intent(getApplicationContext(), LoginActivity.class);
+                   i = new Intent(getApplicationContext(), DashBoardActivity.class);
+                 //   i = new Intent(getApplicationContext(), LoginActivity.class);
                 }else {
 
                     i = new Intent(getApplicationContext(), LoginActivity.class);

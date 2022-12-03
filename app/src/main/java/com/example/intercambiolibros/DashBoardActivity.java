@@ -1,18 +1,28 @@
 package com.example.intercambiolibros;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.widget.RelativeLayout;
 
+import java.io.*;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.annotation.NonNull;
+
+import com.google.android.material.bottomnavigation.BottomNavigationView;
+import com.google.android.material.navigation.NavigationBarView;
+
+import android.os.Bundle;
+import android.view.MenuItem;
+import androidx.fragment.app.Fragment;
+
 import androidx.appcompat.app.AppCompatActivity;
 
-public class DashBoardActivity extends AppCompatActivity {
+public class DashBoardActivity extends AppCompatActivity implements NavigationBarView.OnItemReselectedListener {
 
-    RelativeLayout option_registros;
-    RelativeLayout option_healtcenters;
-    RelativeLayout option_maps;
-    RelativeLayout option_notas;
-    RelativeLayout option_buscar;
-    RelativeLayout option_config;
+        BottomNavigationView bottomNavigationView;
+
+
+
 
 
     @Override
@@ -20,75 +30,41 @@ public class DashBoardActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_dashboard);
 
+        bottomNavigationView = findViewById(R.id.bottomNavigationView);
 
-//        option_registros = findViewById(R.id.optionRegistros);
-//
-//        option_registros.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(DashBoardActivity.this, DatosActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(i);
-//            }
-//        });
-//
-//
-//        option_healtcenters = findViewById(R.id.optionHealthCenters);
-//
-//        option_healtcenters.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(DashBoardActivity.this, GraficsActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(i);
-//            }
-//        });
-//
-//        option_maps = findViewById(R.id.optionMaps);
-//
-//        option_maps.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(DashBoardActivity.this, MapsActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(i);
-//            }
-//        });
-//
-//        option_notas = findViewById(R.id.optionNotas);
-//
-//        option_notas.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(DashBoardActivity.this, NotasActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(i);
-//            }
-//        });
-//
-//        option_buscar = findViewById(R.id.optionBuscar);
-//
-//        option_buscar.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(DashBoardActivity.this, BuscarActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(i);
-//            }
-//        });
-//
-//        option_config = findViewById(R.id.optionConfig);
-//
-//        option_config.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View v) {
-//                Intent i = new Intent(DashBoardActivity.this, ConfiguracionActivity.class);
-//                i.addFlags(Intent.FLAG_ACTIVITY_SINGLE_TOP);
-//                startActivity(i);
-//            }
-//        });
+        bottomNavigationView.setOnItemSelectedListener(new NavigationBarView.OnItemSelectedListener() {
+            @SuppressLint("NonConstantResourceId")
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+
+                switch (item.getItemId()) {
+                    case R.id.person:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment  , firstFragment).commit();
+                        return true;
+                    case R.id.home:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment  , secondFragment).commit();
+                        return true;
+                    case R.id.settings:
+                        getSupportFragmentManager().beginTransaction().replace(R.id.flFragment  , thirdFragment).commit();
+                        return true;
+
+
+                }
+                return false;
+            }
+        });
+        bottomNavigationView.setSelectedItemId(R.id.home );
 
     }
+    FirstFragment firstFragment = new FirstFragment();
+    SecondFragment secondFragment = new SecondFragment();
+    ThirdFragment thirdFragment = new ThirdFragment();
 
 
+
+
+    @Override
+    public void onNavigationItemReselected(@NonNull MenuItem item) {
+
+    }
 }
