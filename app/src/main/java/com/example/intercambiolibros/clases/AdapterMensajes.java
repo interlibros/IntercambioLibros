@@ -1,6 +1,7 @@
 package com.example.intercambiolibros.clases;
 
 import android.content.Context;
+import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -60,7 +61,8 @@ public class AdapterMensajes extends RecyclerView.Adapter<HolderMensaje> {
             String n = listMensaje.get(position).getNombre().toString();
 
         if(n.equals(user)){
-            holder.itemView.setBackgroundResource(R.color.md_theme_dark_primary) ;
+            //holder.itemView.setBackgroundResource(R.color.md_theme_dark_primary) ;
+            holder.itemView.getRootView().setBackgroundColor(Color.parseColor("#5bb548") ) ;
             holder.getMensaje().setVisibility(View.VISIBLE);
         }
         else {

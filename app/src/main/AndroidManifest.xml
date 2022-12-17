@@ -33,10 +33,10 @@
         <!--                android:name="android.app.lib_name"-->
         <!--                android:value="" />-->
         <!--        </activity>-->
-        <activity android:name=".DashBoardActivity"/>
-        <activity android:name=".LoginActivity"/>
+        <activity android:name=".activitys.DashBoardActivity"/>
+        <activity android:name=".activitys.LoginActivity"/>
         <activity
-            android:name=".SplashActivity"
+            android:name=".activitys.SplashActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

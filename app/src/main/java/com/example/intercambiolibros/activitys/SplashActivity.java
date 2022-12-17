@@ -1,4 +1,4 @@
-package com.example.intercambiolibros;
+package com.example.intercambiolibros.activitys;
 
 import android.content.Context;
 import android.content.Intent;
@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.os.Handler;
 
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.example.intercambiolibros.R;
 
 public class SplashActivity extends AppCompatActivity {
 

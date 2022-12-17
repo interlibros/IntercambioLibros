@@ -1,4 +1,4 @@
-package com.example.intercambiolibros;
+package com.example.intercambiolibros.fragments;
 
 import android.content.Context;
 import android.content.SharedPreferences;
@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.intercambiolibros.R;
 import com.example.intercambiolibros.clases.AdapterMensajes;
 import com.example.intercambiolibros.clases.MensajeEnviar;
 import com.example.intercambiolibros.clases.MensajeRecibir;
@@ -29,10 +30,10 @@ import com.google.firebase.storage.StorageReference;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
-public class FirstFragment extends Fragment {
+public class ChatFragment extends Fragment {
 
 
-    public FirstFragment() {
+    public ChatFragment() {
         // require a empty public constructor
     }
 
@@ -58,7 +59,7 @@ public class FirstFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,Bundle   savedInstanceState) {
 
         super.onCreate(savedInstanceState);
-        View rootView = inflater.inflate(R.layout.fragment_first  , container, false);
+        View rootView = inflater.inflate(R.layout.fragment_chat, container, false);
         //write = (EditText)rootView.findViewById(R.id.editText1);
         //getView().setContentView(R.layout.fragment_first);
 
