@@ -1,4 +1,4 @@
-package com.example.intercambiolibros;
+package com.example.intercambiolibros.clases;
 
 import android.app.Application;
 
